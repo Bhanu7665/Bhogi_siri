@@ -1,0 +1,192 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, sans-serif;
+    overflow: auto;
+}
+
+.container {
+    min-height: 100vh;
+    background: conic-gradient(at center, #f59e0b, #ef4444, #f97316);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background elements */
+.background-elements {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.floating-icon {
+    position: absolute;
+    color: rgba(253, 224, 71, 0.3);
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Main content */
+.main-content {
+    text-align: center;
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 1s;
+}
+
+.main-content.hidden {
+    transform: translateY(2.5rem);
+    opacity: 0;
+}
+
+/* Header */
+.header {
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
+
+.header p {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: rgb(254, 249, 195);
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+/* Star Design */
+.star-container {
+    width: clamp(20rem, 50vw, 36rem);
+    height: clamp(20rem, 50vw, 36rem);
+    margin: 0 auto 3rem;
+    position: relative;
+}
+
+.base-circle {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(255,165,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.star {
+    width: 75%;
+    height: 75%;
+    position: relative;
+    animation: spin-slow 30s linear infinite;
+}
+
+.star-ray {
+    position: absolute;
+    width: 100%;
+    height: 1rem;
+    background: linear-gradient(to right, #dc2626, #f97316, #f59e0b);
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+}
+
+.center-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2rem;
+    height: 2rem;
+    background: #dc2626;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.outer-ring {
+    position: absolute;
+    inset: 1rem;
+    border: 4px solid #f97316;
+    border-radius: 50%;
+    animation: spin-reverse 20s linear infinite;
+}
+
+/* Message */
+.message-container {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+}
+
+.message {
+    background: linear-gradient(to right, rgba(124, 45, 18, 0.3), rgba(153, 27, 27, 0.3));
+    padding: 2rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.message p {
+    font-size: clamp(1.25rem, 3vw, 1.875rem);
+    color: white;
+    line-height: 1.5;
+}
+
+.sparkle {
+    position: absolute;
+    color: rgb(254, 240, 138);
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+.sparkle.left {
+    left: -2rem;
+    top: 0;
+}
+
+.sparkle.right {
+    right: -2rem;
+    bottom: 0;
+}
+
+/* Animations */
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0);
+    }
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+    }
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .star-container {
+        width: 36rem;
+        height: 36rem;
+    }
+}
